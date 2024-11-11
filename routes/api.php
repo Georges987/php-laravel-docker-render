@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     //$request->user();
 });
 
+Route::middleware('auth:api')->get('/users', function (Request $request) {
+    $user = User::all();
+    return response()->json(['user' => $user]);
+    //$request->user();
+});
